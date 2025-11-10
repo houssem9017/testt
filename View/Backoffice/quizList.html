@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="fr" class="expanded">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta content="Unisphere" name="author">
+  <title>Gestion des Quiz - Unisphere</title>
+  
+  <script src="../../src/assets/js/vendors/color-modes.js"></script>
+  <script>
+    if (localStorage.getItem('sidebarExpanded') === 'false') {
+      document.documentElement.classList.add('collapsed');
+      document.documentElement.classList.remove('expanded');
+    } else {
+      document.documentElement.classList.remove('collapsed');
+      document.documentElement.classList.add('expanded');
+    }
+  </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <link rel="stylesheet" href="../../src/assets/css/theme.css" />
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <div id="miniSidebar">
+    <div class="brand-logo">
+      <a class="d-none d-md-flex align-items-center gap-2" href="dashboard.html">
+        <img src="../../src/assets/images/Logo_Site_Web.png" alt="Unisphere" style="max-width: 40px;" />
+        <span class="fw-bold fs-4 site-logo-text">Unisphere</span>
+      </a>
+    </div>
+    <ul class="navbar-nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="dashboard.html">
+          <span class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M4 4h6v8h-6z" />
+              <path d="M4 16h6v4h-6z" />
+              <path d="M14 12h6v8h-6z" />
+              <path d="M14 4h6v4h-6z" />
+            </svg>
+          </span>
+          <span class="text">Dashboard</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <div class="nav-heading">Gestion</div>
+        <hr class="mx-5 nav-line mb-1" />
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="quizList.html">
+          <span class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 8v4" />
+              <path d="M12 16v.01" />
+            </svg>
+          </span>
+          <span class="text">Quiz Questions</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="userList.html">
+          <span class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+              <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
+            </svg>
+          </span>
+          <span class="text">Utilisateurs</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="gameResults.html">
+          <span class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M8 21l8 0" />
+              <path d="M12 17l0 4" />
+              <path d="M7 4l10 0" />
+              <path d="M17 4v8a5 5 0 0 1 -10 0v-8" />
+              <path d="M5 9l14 0" />
+            </svg>
+          </span>
+          <span class="text">Résultats Jeux</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div id="content" class="position-relative h-100">
+    <!-- Navbar -->
+    <div class="navbar-glass navbar navbar-expand-lg px-0 px-lg-4">
+      <div class="container-fluid px-lg-0">
+        <div class="d-flex align-items-center gap-4">
+          <div class="d-none d-lg-block">
+            <a class="sidebar-toggle d-flex texttooltip p-3" href="javascript:void(0)">
+              <span class="collapse-mini">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-bar-left text-secondary">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M4 12l10 0" />
+                  <path d="M4 12l4 4" />
+                  <path d="M4 12l4 -4" />
+                  <path d="M20 4l0 16" />
+                </svg>
+              </span>
+              <span class="collapse-expanded">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-bar-right text-secondary">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M20 12l-10 0" />
+                  <path d="M20 12l-4 4" />
+                  <path d="M20 12l-4 -4" />
+                  <path d="M4 4l0 16" />
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+        <ul class="list-unstyled d-flex align-items-center mb-0 gap-2">
+          <li>
+            <div class="dropdown">
+              <button class="btn btn-ghost btn-icon rounded-circle d-flex align-items-center" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+                <i class="ti theme-icon-active lh-1 fs-5"><i class="ti theme-icon ti-sun"></i></i>
+                <span class="visually-hidden bs-theme-text">Toggle theme</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow">
+                <li>
+                  <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="light" aria-pressed="true">
+                    <i class="ti theme-icon ti ti-sun"></i>
+                    <span class="ms-2">Light</span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                    <i class="ti theme-icon ti-moon-stars"></i>
+                    <span class="ms-2">Dark</span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="false">
+                    <i class="ti theme-icon ti-circle-half-2"></i>
+                    <span class="ms-2">Auto</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="ms-3 dropdown">
+            <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="../../src/assets/images/avatar/avatar-1.jpg" alt="" class="avatar avatar-sm rounded-circle" />
+            </a>
+            <div class="dropdown-menu dropdown-menu-end dropdown-menu-md p-0">
+              <div>
+                <div class="d-flex gap-3 align-items-center border-dashed border-bottom px-4 py-4">
+                  <img src="../../src/assets/images/avatar/avatar-1.jpg" alt="" class="avatar avatar-md rounded-circle" />
+                  <div>
+                    <h4 class="mb-0 fs-5">Admin User</h4>
+                    <p class="mb-0 text-secondary small">@admin</p>
+                  </div>
+                </div>
+                <div class="p-3 d-flex flex-column gap-1">
+                  <a href="../../index.html" class="dropdown-item d-flex align-items-center gap-2">
+                    <span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+                        <path d="M9 12h12l-3 -3" />
+                        <path d="M18 15l3 -3" />
+                      </svg>
+                    </span>
+                    <span>Déconnexion</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="custom-container">
+      <div class="row mb-6">
+        <div class="col-12">
+          <div class="d-flex justify-content-between align-items-center">
+            <h2 class="mb-0">Gestion des Questions Quiz</h2>
+            <button class="btn btn-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 5l0 14" />
+                <path d="M5 12l14 0" />
+              </svg>
+              <span class="ms-2">Ajouter une Question</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="card card-lg">
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Question</th>
+                      <th>Thème</th>
+                      <th>Difficulté</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-secondary">1</td>
+                      <td>Qu'est-ce que le développement durable?</td>
+                      <td><span class="badge bg-success-subtle text-success-emphasis">Environnement</span></td>
+                      <td><span class="badge bg-info-subtle text-info-emphasis">Facile</span></td>
+                      <td>
+                        <button class="btn btn-ghost btn-icon btn-sm rounded-circle">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                            <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                            <path d="M16 5l3 3" />
+                          </svg>
+                        </button>
+                        <button class="btn btn-ghost btn-icon btn-sm rounded-circle text-danger">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M4 7l16 0" />
+                            <path d="M10 11l0 6" />
+                            <path d="M14 11l0 6" />
+                            <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                            <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                          </svg>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-secondary">2</td>
+                      <td>Quelle est la capitale de la France?</td>
+                      <td><span class="badge bg-primary-subtle text-primary-emphasis">Culture</span></td>
+                      <td><span class="badge bg-info-subtle text-info-emphasis">Facile</span></td>
+                      <td>
+                        <button class="btn btn-ghost btn-icon btn-sm rounded-circle">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                            <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                            <path d="M16 5l3 3" />
+                          </svg>
+                        </button>
+                        <button class="btn btn-ghost btn-icon btn-sm rounded-circle text-danger">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M4 7l16 0" />
+                            <path d="M10 11l0 6" />
+                            <path d="M14 11l0 6" />
+                            <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                            <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                          </svg>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-secondary">3</td>
+                      <td>Comment promouvoir la paix dans le monde?</td>
+                      <td><span class="badge bg-warning-subtle text-warning-emphasis">Paix</span></td>
+                      <td><span class="badge bg-warning-subtle text-warning-emphasis">Moyen</span></td>
+                      <td>
+                        <button class="btn btn-ghost btn-icon btn-sm rounded-circle">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                            <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                            <path d="M16 5l3 3" />
+                          </svg>
+                        </button>
+                        <button class="btn btn-ghost btn-icon btn-sm rounded-circle text-danger">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M4 7l16 0" />
+                            <path d="M10 11l0 6" />
+                            <path d="M14 11l0 6" />
+                            <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                            <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                          </svg>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../src/assets/js/main.js"></script>
+</body>
+</html>
